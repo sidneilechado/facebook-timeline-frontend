@@ -1,0 +1,57 @@
+section#post-list {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+section#post-list article {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-top: 30px;
+}
+
+section#post-list article header {
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section#post-list article header .user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+section#post-list article header .user-info span {
+  font-size: 18px;
+}
+
+section#post-list article header .user-info p.content {
+  font-size: 13px;
+  color: #666;
+  margin-top: 3px;
+}
+
+section#post-list article header .user-info span#span-likes {
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+section#post-list article footer {
+  padding: 20px;
+}
+
+section#post-list article footer div.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section#post-list article footer div.actions button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}

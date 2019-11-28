@@ -22,7 +22,7 @@ class Login extends Component {
     e.preventDefault();
 
     await api
-      .post('session', {
+      .post('/login', {
         email: `${this.state.email}`,
         password: `${this.state.password}`,
       })

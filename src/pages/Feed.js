@@ -15,7 +15,7 @@ class Feed extends Component {
   async componentDidMount() {
     this.registerToSocket();
 
-    const response = await api.get('posts', {
+    const response = await api.get('/posts', {
       _id: `${localStorage.getItem('user_id')}`,
     });
 

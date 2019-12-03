@@ -26,7 +26,7 @@ class Login extends Component {
         email: `${this.state.email}`,
         password: `${this.state.password}`,
       })
-      .then(res => localStorage.setItem('jwt', res.data));
+      .then(res => localStorage.setItem('jwt', res.data.token));
 
     await api
       .post('/user/getUser', {

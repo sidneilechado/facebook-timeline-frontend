@@ -9,6 +9,14 @@ class New extends Component {
     content: '',
   };
 
+  async componentDidMount() {
+    const responseUser = await api.post('/user/getUserId', {
+      _id: `${localStorage.getItem('user_id')}`,
+    });
+
+    this.setState({ author: responseUser.data.name });
+  }
+
   handleSubmit = async e => {
     e.preventDefault();
 
@@ -28,6 +36,7 @@ class New extends Component {
     return (
       <form id="new-post" onSubmit={this.handleSubmit}>
         <input
+          readOnly="readonly"
           type="text"
           name="author"
           placeholder="Author"

@@ -21,7 +21,7 @@ class Register extends Component {
       tag: `${this.state.tag}`,
     });
 
-    this.props.history.push('/login');
+    this.props.history.push('/');
   };
 
   handleChange = e => {

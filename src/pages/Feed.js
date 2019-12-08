@@ -12,6 +12,7 @@ class Feed extends Component {
   state = {
     feed: [],
     following: [],
+    follow: '',
   };
 
   async componentDidMount() {
@@ -28,8 +29,6 @@ class Feed extends Component {
     });
 
     this.setState({ following: responseUser.data.following });
-
-    console.log(this.state.following);
   }
 
   registerToSocket = () => {
@@ -57,13 +56,37 @@ class Feed extends Component {
     api.post(`/posts/${id}/like`);
   };
 
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleFollow = async e => {
+    e.preventDefault();
+
+    await api.post(`follow/${localStorage.getItem('user_id')}`, {
+      tag: `${this.state.follow}`,
+    });
+
+    this.componentDidMount();
+  };
+
   render() {
     return (
       <section id="post-list">
         <div id="logout">
-          <Link to="/">
-            <button onClick={this.handleLogout}>Logout</button>
-          </Link>
+          <form onSubmit={this.handleFollow}>
+            <input
+              type="text"
+              name="follow"
+              placeholder="user you want to follow"
+              onChange={this.handleChange}
+              value={this.state.follow}
+            />
+            <button type="submit">Follow</button>
+            <Link to="/">
+              <button onClick={this.handleLogout}>Logout</button>
+            </Link>
+          </form>
         </div>
         {this.state.feed.map(post =>
           this.state.following.includes(post.author) ? (

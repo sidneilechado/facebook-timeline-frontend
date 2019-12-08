@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { isAuthenticated } from './services/auth';
 
 import Feed from './pages/Feed';
@@ -14,9 +14,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect
-          to={{ pathname: '/login', state: { from: props.location } }}
-        />
+        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
       )
     }
   />
@@ -25,7 +23,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 function Routes() {
   return (
     <Switch>
-      <Route path="/login" component={Login} />
+      <Route path="/" exact component={Login} />
       <Route path="/register" component={Register} />
       <PrivateRoute path="/feed" component={Feed} />
       <PrivateRoute path="/new" component={New} />

@@ -8,6 +8,7 @@ class Register extends Component {
     name: '',
     email: '',
     password: '',
+    tag: '',
   };
 
   handleSubmit = async e => {
@@ -17,6 +18,7 @@ class Register extends Component {
       name: `${this.state.name}`,
       email: `${this.state.email}`,
       password: `${this.state.password}`,
+      tag: `${this.state.tag}`,
     });
 
     this.props.history.push('/login');
@@ -42,6 +44,13 @@ class Register extends Component {
           placeholder="Email"
           onChange={this.handleChange}
           value={this.state.email}
+        />
+        <input
+          type="text"
+          name="tag"
+          placeholder="Tag"
+          onChange={this.handleChange}
+          value={this.state.tag}
         />
         <input
           type="text"
